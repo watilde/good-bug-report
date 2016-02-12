@@ -1,0 +1,23 @@
+{
+  "name": "good-bug-report",
+  "version": "1.0.0",
+  "description": "better way for large projects to report issue on GitHub",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/watilde/good-bug-report.git"
+  },
+  "keywords": [
+    "GitHub",
+    "issue"
+  ],
+  "author": "Daijiro Wachi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/watilde/good-bug-report/issues"
+  },
+  "homepage": "https://github.com/watilde/good-bug-report#readme"
+}
