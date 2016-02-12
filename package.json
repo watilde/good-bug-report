@@ -4,7 +4,7 @@
   "description": "better way for large projects to report issue on GitHub",
   "main": "index.js",
   "scripts": {
-    "deploy": "git push origin :gh-pages | git subtree push --prefix src/ origin gh-pages",
+    "deploy": "git push origin :gh-pages && git subtree push --prefix src/ origin gh-pages",
     "build": "browserify lib/index.js -o src/index.js",
     "watch": "watchify lib/index.js -o src/index.js",
     "test": "npm test"
