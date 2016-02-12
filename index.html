@@ -13,84 +13,44 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div class="gbr-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
-     <header class="gbr-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
-       <div class="mdl-layout__header-row">
-         <h1 class="mdl-layout-title">💌 Good Bug Reporter</h1>
-         <div class="mdl-layout-spacer"></div>
-         <nav class="mdl-navigation">
-           <a class="mdl-navigation__link" href="">Fork</a>
-         </nav>
-       </div>
-     </header>
-     <div class="gbr-ribbon"></div>
-     <main class="gbr-main mdl-layout__content">
-       <div class="gbr-container mdl-grid">
-         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-         <div class="gbr-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-           <h2 class="mdl-typography--text-center">Repository name</h2>
-           <h3>Title</h3>
-           <div class="gbr-textfield mdl-textfield mdl-js-textfield">
-             <input class="mdl-textfield__input" type="text" id="sample1">
-             <label class="mdl-textfield__label" for="sample1">Text...</label>
-           </div>
-          <h3>Description</h3>
-          <div class="gbr-textfield mdl-textfield mdl-js-textfield">
-            <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
-            <label class="mdl-textfield__label" for="sample5">Text lines...</label>
-          </div>
-          <h3>Labels</h3>
-          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">Feature Request</span>
-          </label>
-          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
-            <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">Bugs</span>
-          </label>
-          <h3>Versions</h3>
-          <label class="gbr-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-            <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
-            <span class="mdl-radio__label">v3.3.0</span>
-          </label>
-          <label class="gbr-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-            <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2">
-            <span class="mdl-radio__label">v3.4.0</span>
-          </label>
-          <h3>OS</h3>
-          <div class="gbr-textfield mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="sample1">
-            <label class="mdl-textfield__label" for="sample1">OS X</label>
-          </div>
-          <h3>Logs(gist url)</h3>
-          <div class="gbr-textfield mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="sample1">
-            <label class="mdl-textfield__label" for="sample1">URL</label>
-          </div>
-          <div class="gbr-content-footer">
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
-              <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
-              <span class="mdl-checkbox__label">Did you read <a href="https://github.com/watilde/issue-json/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> ?</span>
-            </label>
+<div class="gbr-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+  <header class="gbr-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+    <div class="mdl-layout__header-row">
+      <h1 class="mdl-layout-title">💌 Good Bug Reporter</h1>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Fork</a>
+      </nav>
+    </div>
+  </header>
+  <div class="gbr-ribbon"></div>
+  <main class="gbr-main mdl-layout__content">
+    <div class="gbr-container mdl-grid">
+      <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+        <div class="gbr-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+          <h2 id="js-title" class="mdl-typography--text-center"></h2>
+          <div id="js-content"></div>
+          <div id="js-content-footer" class="gbr-content-footer">
             <div class="mdl-typography--text-center">
               <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                 Submit
               </button>
             </div>
           </div>
-         </div>
-       </div>
-       <footer class="gbr-footer mdl-mini-footer">
-         <div class="mdl-mini-footer--left-section">
-           <ul class="mdl-mini-footer--link-list">
-             <li><a href="https://twitter.com/watilde">@watilde</a></li>
-           </ul>
-         </div>
-       </footer>
-     </main>
-   </div>
+        </div>
+      </div>
+      <footer class="gbr-footer mdl-mini-footer">
+        <div class="mdl-mini-footer--left-section">
+          <ul class="mdl-mini-footer--link-list">
+            <li>created by <a href="https://twitter.com/watilde">@watilde</a></li>
+          </ul>
+        </div>
+      </footer>
+    </main>
+  </div>
   <script src="assets/mdl/material.min.js"></script>
   <script src="assets/jquery/jquery.min.js"></script>
+  <script src="assets/ejs/ejs.js"></script>
   <script src="index.js"></script>
 </body>
 </html>
