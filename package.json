@@ -4,6 +4,8 @@
   "description": "better way for large projects to report issue on GitHub",
   "main": "index.js",
   "scripts": {
+    "build": "browserify lib/index.js -o src/index.js",
+    "watch": "watchify lib/index.js -o src/index.js",
     "test": "npm test"
   },
   "repository": {
@@ -21,7 +23,12 @@
   },
   "homepage": "https://github.com/watilde/good-bug-report#readme",
   "dependencies": {
+    "ejs": "^2.4.1",
     "jquery": "^2.2.0",
     "material-design-lite": "^1.1.1"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "watchify": "^3.7.0"
   }
 }
