@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/watilde/good-bug-report/issues"
   },
-  "homepage": "https://github.com/watilde/good-bug-report#readme"
+  "homepage": "https://github.com/watilde/good-bug-report#readme",
+  "dependencies": {
+    "material-design-lite": "^1.1.1"
+  }
 }
