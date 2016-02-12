@@ -18,6 +18,13 @@ var account = get[0]
 var repository = get[1]
 var name = account + '/' + repository
 
+$('#js-submit').on('click', function () {
+  var title = $('#js-issue-title').val()
+  var url = endpoints.github + name + '/issues/new'
+  url += '?title=' + title
+  window.location.href = url
+})
+
 $.getJSON(endpoints.api + name + '/labels', function (data) {})
 .done(function(labels) {
   var dom = tpl.labels
