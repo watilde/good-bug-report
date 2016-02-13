@@ -36,8 +36,10 @@ $.getJSON(endpoints.api + name + '/labels', function (data) {})
 })
 
 $.getJSON(endpoints.rawgit + name + '/master/issue.json', function (data) {})
+.fail(function() {
+  $("#js-title").text(name)
+})
 .done(function(data) {
-  if (!data) return
   var fields = data.fields
   $("#js-title").text(data.title)
   fields.forEach(function (field) {
@@ -51,11 +53,10 @@ $.getJSON(endpoints.rawgit + name + '/master/issue.json', function (data) {})
 })
 
 $.get(endpoints.rawgit + name + '/master/CONTRIBUTING.md', function (data) {})
+.fail(function() {
+  $('#js-submit').attr("disabled", null)
+})
 .done(function(data) {
-  if (!data) {
-    $('#js-submit').attr("disabled", null)
-    return
-  }
   var dom = tpl.agreement
   var link = endpoints.github + name + '/blob/master/CONTRIBUTING.md'
   var params = {link: link, ids: ids}
