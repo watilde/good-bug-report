@@ -27,6 +27,7 @@ $('#js-submit').on('click', function () {
 
 $.getJSON(endpoints.api + name + '/labels', function (data) {})
 .done(function(labels) {
+  if (!labels) return
   var dom = tpl.labels
   var params = {labels: labels, ids: ids}
   var elem = ejs.render(dom, params)
@@ -36,6 +37,7 @@ $.getJSON(endpoints.api + name + '/labels', function (data) {})
 
 $.getJSON(endpoints.rawgit + name + '/master/issue.json', function (data) {})
 .done(function(data) {
+  if (!data) return
   var fields = data.fields
   $("#js-title").text(data.title)
   fields.forEach(function (field) {
