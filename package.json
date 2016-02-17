@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/watilde/good-bug-report#readme",
   "dependencies": {
+    "jss": "^3.3.0",
     "material-design-lite": "^1.1.1",
     "react": "^0.14.7",
     "react-jss": "^2.0.1"
