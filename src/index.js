@@ -1,51 +1,77 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var React = require('react');
-var useSheet = require('../jss').useSheet;
+'use strict';
 
-var Header = require('./header');
-var Footer = require('./footer');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _jss = require('../jss');
+
+var _header = require('./header');
+
+var _header2 = _interopRequireDefault(_header);
+
+var _footer = require('./footer');
+
+var _footer2 = _interopRequireDefault(_footer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styles = {};
 
-var App = React.createClass({
+var App = _react2.default.createClass({
   displayName: 'App',
-
-  render: function () {
-    return React.createElement(
+  render: function render() {
+    return _react2.default.createElement(
       'div',
       { className: 'gbr-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100' },
-      React.createElement(Header, null),
-      React.createElement('div', { className: 'gbr-ribbon' }),
-      React.createElement(Footer, null)
+      _react2.default.createElement(_header2.default, null),
+      _react2.default.createElement('div', { className: 'gbr-ribbon' }),
+      _react2.default.createElement(_footer2.default, null)
     );
   }
 });
 
-module.exports = useSheet(App, styles);
+exports.default = (0, _jss.useSheet)(App, styles);
+
 },{"../jss":6,"./footer":2,"./header":3,"react":243}],2:[function(require,module,exports){
-var React = require('react');
-var useSheet = require('../jss').useSheet;
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _jss = require('../jss');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styles = {};
 
-var Footer = React.createClass({
+var Footer = _react2.default.createClass({
   displayName: 'Footer',
-
-  render: function () {
-    return React.createElement(
+  render: function render() {
+    return _react2.default.createElement(
       'footer',
       { className: 'gbr-footer mdl-mini-footer' },
-      React.createElement(
+      _react2.default.createElement(
         'div',
         { className: 'mdl-mini-footer--left-section' },
-        React.createElement(
+        _react2.default.createElement(
           'ul',
           { className: 'mdl-mini-footer--link-list' },
-          React.createElement(
+          _react2.default.createElement(
             'li',
             null,
             'created by ',
-            React.createElement(
+            _react2.default.createElement(
               'a',
               { href: 'https://twitter.com/watilde' },
               '@watilde'
@@ -57,38 +83,49 @@ var Footer = React.createClass({
   }
 });
 
-module.exports = useSheet(Footer, styles);
+exports.default = (0, _jss.useSheet)(Footer, styles);
+
 },{"../jss":6,"react":243}],3:[function(require,module,exports){
-var React = require('react');
-var useSheet = require('../jss').useSheet;
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _jss = require('../jss');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styles = {};
 
-var Header = React.createClass({
+var Header = _react2.default.createClass({
   displayName: 'Header',
-
-  render: function () {
-    return React.createElement(
+  render: function render() {
+    return _react2.default.createElement(
       'header',
       { className: 'gbr-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800' },
-      React.createElement(
+      _react2.default.createElement(
         'div',
         { className: 'mdl-layout__header-row' },
-        React.createElement(
+        _react2.default.createElement(
           'h1',
           { className: 'mdl-layout-title' },
           '💌 Good Bug Reporter'
         ),
-        React.createElement('div', { className: 'mdl-layout-spacer' }),
-        React.createElement(
+        _react2.default.createElement('div', { className: 'mdl-layout-spacer' }),
+        _react2.default.createElement(
           'nav',
           { className: 'mdl-navigation' },
-          React.createElement(
+          _react2.default.createElement(
             'a',
             { className: 'mdl-navigation__link', href: 'https://github.com/watilde/issue-json/blob/master/issue.json', target: '_blank' },
             'issue.json'
           ),
-          React.createElement(
+          _react2.default.createElement(
             'a',
             { className: 'mdl-navigation__link', href: 'https://github.com/watilde/good-bug-report', target: '_blank' },
             'Fork'
@@ -99,18 +136,29 @@ var Header = React.createClass({
   }
 });
 
-module.exports = useSheet(Header, styles);
+exports.default = (0, _jss.useSheet)(Header, styles);
+
 },{"../jss":6,"react":243}],4:[function(require,module,exports){
-var React = require('react');
-var useSheet = require('../jss').useSheet;
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _jss = require('../jss');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styles = {};
 
-var Home = React.createClass({
+var Home = _react2.default.createClass({
   displayName: 'Home',
-
-  render: function () {
-    return React.createElement(
+  render: function render() {
+    return _react2.default.createElement(
       'h1',
       null,
       'Hello World!'
@@ -118,35 +166,77 @@ var Home = React.createClass({
   }
 });
 
-module.exports = useSheet(Home, styles);
+exports.default = (0, _jss.useSheet)(Home, styles);
+
 },{"../jss":6,"react":243}],5:[function(require,module,exports){
-var Router = require('react-router');
-var render = require('react-dom').render;
-var routes = require('./routes');
+'use strict';
 
-render(routes, document.getElementById('app'));
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var _reactDom = require('react-dom');
+
+var _routes = require('./routes');
+
+var _routes2 = _interopRequireDefault(_routes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _reactDom.render)(_routes2.default, document.getElementById('app'));
+
 },{"./routes":7,"react-dom":29,"react-router":58}],6:[function(require,module,exports){
-var jss = require('jss').create();
-jss.use(require('jss-vendor-prefixer'));
-var useSheet = require('react-jss')(jss);
+'use strict';
 
-module.exports.useSheet = useSheet;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useSheet = undefined;
+
+var _jss = require('jss');
+
+var _reactJss = require('react-jss');
+
+var _reactJss2 = _interopRequireDefault(_reactJss);
+
+var _jssVendorPrefixer = require('jss-vendor-prefixer');
+
+var _jssVendorPrefixer2 = _interopRequireDefault(_jssVendorPrefixer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var jss = (0, _jss.create)();
+jss.use(_jssVendorPrefixer2.default);
+var useSheet = (0, _reactJss2.default)(jss);
+exports.useSheet = useSheet;
+
 },{"jss":26,"jss-vendor-prefixer":9,"react-jss":30}],7:[function(require,module,exports){
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var hashHistory = ReactRouter.hashHistory;
+'use strict';
 
-var App = require('./components/app');
-var Home = require('./components/home');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRouter = require('react-router');
+
+var _app = require('./components/app');
+
+var _app2 = _interopRequireDefault(_app);
+
+var _home = require('./components/home');
+
+var _home2 = _interopRequireDefault(_home);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var routes = React.createElement(
-  Router,
-  { history: hashHistory },
-  React.createElement(Route, { path: '/', component: App })
+  _reactRouter.Router,
+  { history: _reactRouter.hashHistory },
+  React.createElement(_reactRouter.Route, { path: '/', component: _app2.default })
 );
 
-module.exports = routes;
+exports.default = routes;
+
 },{"./components/app":1,"./components/home":4,"react-router":58}],8:[function(require,module,exports){
 // shim for using process in browser
 
