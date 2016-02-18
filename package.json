@@ -7,6 +7,8 @@
     "deploy": "git push origin :gh-pages && git subtree push --prefix src/ origin gh-pages",
     "prebuild": "babel --presets react lib --out-dir build",
     "build": "browserify build/index.js -o src/index.js",
+    "watch": "nodemon -e js -w lib -x 'npm run build'",
+    "start": "npm run watch",
     "test": "npm test"
   },
   "repository": {
@@ -35,6 +37,7 @@
   "devDependencies": {
     "babel-cli": "^6.5.1",
     "babel-preset-react": "^6.5.0",
-    "browserify": "^13.0.0"
+    "browserify": "^13.0.0",
+    "nodemon": "^1.8.1"
   }
 }
