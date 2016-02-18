@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "deploy": "git push origin :gh-pages && git subtree push --prefix src/ origin gh-pages",
-    "build": "browserify lib/index.js -o src/index.js",
-    "watch": "watchify lib/index.js -o src/index.js",
+    "prebuild": "babel --presets react lib --out-dir build",
+    "build": "browserify build/index.js -o src/index.js",
     "test": "npm test"
   },
   "repository": {
@@ -25,12 +25,16 @@
   "homepage": "https://github.com/watilde/good-bug-report#readme",
   "dependencies": {
     "jss": "^3.3.0",
+    "jss-vendor-prefixer": "^1.0.1",
     "material-design-lite": "^1.1.1",
     "react": "^0.14.7",
-    "react-jss": "^2.0.1"
+    "react-dom": "^0.14.7",
+    "react-jss": "^2.0.1",
+    "react-router": "^2.0.0"
   },
   "devDependencies": {
-    "browserify": "^13.0.0",
-    "watchify": "^3.7.0"
+    "babel-cli": "^6.5.1",
+    "babel-preset-react": "^6.5.0",
+    "browserify": "^13.0.0"
   }
 }
