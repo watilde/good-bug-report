@@ -347,14 +347,15 @@ var Form = _react2.default.createClass({
       return false;
     }
     var formComponents = this.state.data.fields.map(function (field, idx) {
+      var key = (0, _ids2.default)();
       if (field.type === 'text') {
-        return _react2.default.createElement(_inputText2.default, { field: field, key: (0, _ids2.default)() });
+        return _react2.default.createElement(_inputText2.default, { field: field, key: key, id: key });
       } else if (field.type === 'radio') {
-        return _react2.default.createElement(_inputRadios2.default, { field: field, key: (0, _ids2.default)() });
+        return _react2.default.createElement(_inputRadios2.default, { field: field, key: key, id: key });
       } else if (field.type === 'checkbox') {
-        return _react2.default.createElement(_inputCheckboxes2.default, { field: field, key: (0, _ids2.default)() });
+        return _react2.default.createElement(_inputCheckboxes2.default, { field: field, key: key, id: key });
       } else if (field.type === 'textarea') {
-        return _react2.default.createElement(_textarea2.default, { field: field, key: (0, _ids2.default)() });
+        return _react2.default.createElement(_textarea2.default, { field: field, key: key, id: key });
       }
     });
     return _react2.default.createElement(
@@ -620,7 +621,8 @@ var InputRadios = _react2.default.createClass({
     componentHandler.upgradeDom();
   },
   render: function render() {
-    var name = (0, _ids2.default)(true);
+    var _this = this;
+
     return _react2.default.createElement(
       'div',
       null,
@@ -631,7 +633,7 @@ var InputRadios = _react2.default.createClass({
       ),
       this.props.field.values.map(function (value, i) {
         var key = (0, _ids2.default)();
-        return _react2.default.createElement(_inputRadio2.default, { key: (0, _ids2.default)(), name: name, value: value });
+        return _react2.default.createElement(_inputRadio2.default, { key: (0, _ids2.default)(), name: _this.props.id, value: value });
       })
     );
   }
@@ -840,8 +842,7 @@ exports.default = routes;
 'use strict';
 
 var i = 0;
-module.exports = function (returnVal) {
-  if (returnVal) return 'js-ids-' + i;
+module.exports = function () {
   i += 1;
   return 'js-ids-' + i;
 };
