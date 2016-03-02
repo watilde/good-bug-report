@@ -490,7 +490,7 @@ var InputCheckbox = _react2.default.createClass({
     return _react2.default.createElement(
       'label',
       { className: 'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect' },
-      _react2.default.createElement('input', { type: 'checkbox', className: 'mdl-checkbox__input', defaultValue: this.props.value }),
+      _react2.default.createElement('input', { type: 'checkbox', className: 'mdl-checkbox__input', name: this.props.name, defaultValue: this.props.value }),
       _react2.default.createElement(
         'span',
         { className: 'mdl-checkbox__label' },
@@ -542,7 +542,8 @@ var InputCheckboxes = _react2.default.createClass({
         this.props.field.label
       ),
       this.props.field.values.map(function (value, i) {
-        return _react2.default.createElement(_inputCheckbox2.default, { key: (0, _ids2.default)(), value: value });
+        var key = (0, _ids2.default)();
+        return _react2.default.createElement(_inputCheckbox2.default, { key: key, name: key, value: value });
       })
     );
   }
@@ -576,7 +577,7 @@ var InputRadio = _react2.default.createClass({
     return _react2.default.createElement(
       'label',
       { className: 'gbr-radio mdl-radio mdl-js-radio mdl-js-ripple-effect' },
-      _react2.default.createElement('input', { type: 'radio', className: 'mdl-radio__button', name: 'options', defaultValue: this.props.value }),
+      _react2.default.createElement('input', { type: 'radio', className: 'mdl-radio__button', name: this.props.name, defaultValue: this.props.value }),
       _react2.default.createElement(
         'span',
         { className: 'mdl-radio__label' },
@@ -619,6 +620,7 @@ var InputRadios = _react2.default.createClass({
     componentHandler.upgradeDom();
   },
   render: function render() {
+    var name = (0, _ids2.default)(true);
     return _react2.default.createElement(
       'div',
       null,
@@ -628,7 +630,8 @@ var InputRadios = _react2.default.createClass({
         this.props.field.label
       ),
       this.props.field.values.map(function (value, i) {
-        return _react2.default.createElement(_inputRadio2.default, { key: (0, _ids2.default)(), value: value });
+        var key = (0, _ids2.default)();
+        return _react2.default.createElement(_inputRadio2.default, { key: (0, _ids2.default)(), name: name, value: value });
       })
     );
   }
@@ -648,6 +651,10 @@ var _react = require('react');
 var _react2 = _interopRequireDefault(_react);
 
 var _jss = require('../jss');
+
+var _ids = require('../util/ids');
+
+var _ids2 = _interopRequireDefault(_ids);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -674,6 +681,7 @@ var InputText = _react2.default.createClass({
           className: 'mdl-textfield__input',
           type: 'text',
           defaultValue: '',
+          name: (0, _ids2.default)(),
           required: this.props.field.required ? true : false }),
         _react2.default.createElement(
           'label',
@@ -687,7 +695,7 @@ var InputText = _react2.default.createClass({
 
 exports.default = (0, _jss.useSheet)(InputText, styles);
 
-},{"../jss":14,"react":269}],11:[function(require,module,exports){
+},{"../jss":14,"../util/ids":16,"react":269}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -699,6 +707,10 @@ var _react = require('react');
 var _react2 = _interopRequireDefault(_react);
 
 var _jss = require('../jss');
+
+var _ids = require('../util/ids');
+
+var _ids2 = _interopRequireDefault(_ids);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -725,6 +737,7 @@ var Textarea = _react2.default.createClass({
           className: 'mdl-textfield__input',
           type: 'text',
           rows: '3',
+          name: (0, _ids2.default)(),
           required: this.props.field.required ? true : false }),
         _react2.default.createElement(
           'label',
@@ -738,7 +751,7 @@ var Textarea = _react2.default.createClass({
 
 exports.default = (0, _jss.useSheet)(Textarea, styles);
 
-},{"../jss":14,"react":269}],12:[function(require,module,exports){
+},{"../jss":14,"../util/ids":16,"react":269}],12:[function(require,module,exports){
 "use strict";
 
 module.exports = {
