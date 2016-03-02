@@ -1,4 +1,137 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports = {
+  endpoints: {
+    github: "https://github.com/",
+    rawgit: "https://raw.githubusercontent.com/"
+  }
+}
+
+},{}],2:[function(require,module,exports){
+var ejs = require('ejs')
+var get = require('./util/get')()
+var ids = require('./util/ids')
+var tpl = require('./tpl/')
+var config = require('./config')
+var endpoints = config.endpoints
+var account = get[0]
+var repository = get[1]
+var name = account + '/' + repository
+
+$('#js-form').on('submit', function (e) {
+  e.preventDefault();
+  var title = $('#js-issue-title').val()
+  var url = endpoints.github + name + '/issues/new'
+  url += '?title=' + title
+  window.location.href = url
+})
+
+$.getJSON(endpoints.rawgit + name + '/master/issue.json', function (data) {})
+.fail(function() {
+  $("#js-title").text(name)
+})
+.done(function(data) {
+  var fields = data.fields
+  $("#js-title").text(data.title)
+  fields.forEach(function (field) {
+    field.ids = ids
+    var type = field.type
+    var dom = tpl[type]
+    var elem = ejs.render(dom, field)
+    $("#js-content").append(elem)
+  })
+  componentHandler.upgradeDom()
+})
+
+$.get(endpoints.rawgit + name + '/master/CONTRIBUTING.md', function (data) {})
+.fail(function() {
+  $('#js-submit').attr("disabled", null)
+})
+.done(function(data) {
+  var dom = tpl.agreement
+  var link = endpoints.github + name + '/blob/master/CONTRIBUTING.md'
+  var params = {link: link, ids: ids}
+  var elem = ejs.render(dom, params)
+  var id = ids(true)
+  $('#js-content-footer').prepend(elem)
+  $('#' + id).on('click', function () {
+    var val = $(this).prop('checked')
+    var status = val ? null : 'disabled'
+    $('#js-submit').attr("disabled", status)
+  })
+  componentHandler.upgradeDom()
+})
+
+},{"./config":1,"./tpl/":5,"./util/get":9,"./util/ids":10,"ejs":12}],3:[function(require,module,exports){
+module.exports = `
+<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="<%= ids() %>">
+  <input type="checkbox" id="<%= ids(true) %>" class="mdl-checkbox__input">
+  <span class="mdl-checkbox__label">Did you review the <a href="<%= link %>" target="_blank">guidelines for contributing</a> to this repository?</span>
+</label>
+`
+
+},{}],4:[function(require,module,exports){
+module.exports = `<h3><%= label %></h3>
+<% values.forEach(function(value){ %>
+  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="<%= ids() %>">
+    <input type="checkbox" id="<%= ids(true) %>" class="mdl-checkbox__input" value="<%= value %>">
+    <span class="mdl-checkbox__label"><%= value %></span>
+  </label>
+<% }) %>`
+
+},{}],5:[function(require,module,exports){
+module.exports = {
+  agreement: require('./agreement'),
+  checkbox: require('./checkbox'),
+  radio: require('./radio'),
+  text: require('./text'),
+  textarea: require('./textarea')
+}
+
+},{"./agreement":3,"./checkbox":4,"./radio":6,"./text":7,"./textarea":8}],6:[function(require,module,exports){
+module.exports = `<h3><%= label %></h3>
+<% values.forEach(function(value){ %>
+  <label class="gbr-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="<%= ids() %>">
+    <input type="radio" id="<%= ids(true) %>" class="mdl-radio__button" name="options" value="<%= value %>">
+    <span class="mdl-radio__label"><%= value %></span>
+  </label>
+<% }) %>`
+
+},{}],7:[function(require,module,exports){
+module.exports = `
+<h3><%= label %></h3>
+<div class="gbr-textfield mdl-textfield mdl-js-textfield">
+  <input class="mdl-textfield__input" type="text" id="<%= ids() %>" <% if (required) { %>required<% } %> >
+  <label class="mdl-textfield__label" for="<%= ids(true) %>"><%= placeholder %></label>
+</div>
+`
+
+},{}],8:[function(require,module,exports){
+module.exports = `
+<h3><%= label %></h3>
+<div class="gbr-textfield mdl-textfield mdl-js-textfield">
+  <textarea class="mdl-textfield__input" type="text" rows= "3" id="<%= ids() %>" <% if (required) { %>required<% } %> ></textarea>
+  <label class="mdl-textfield__label" for="<%= ids(true) %>"><%= placeholder %></label>
+</div>
+`
+
+},{}],9:[function(require,module,exports){
+module.exports = function () {
+  var hash = window.location.hash
+  var vals = hash.split('/').splice(1)
+  return vals
+}
+
+},{}],10:[function(require,module,exports){
+var i  = 0
+module.exports = function (returnVal) {
+  if (returnVal) return 'js-ids-' + i
+  i += 1
+  return 'js-ids-' + i
+}
+
+},{}],11:[function(require,module,exports){
+
+},{}],12:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -749,7 +882,7 @@ if (typeof window != 'undefined') {
   window.ejs = exports;
 }
 
-},{"../package.json":6,"./utils":2,"fs":3,"path":4}],2:[function(require,module,exports){
+},{"../package.json":14,"./utils":13,"fs":11,"path":15}],13:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -892,9 +1025,112 @@ exports.cache = {
 };
 
 
-},{}],3:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
+module.exports={
+  "_args": [
+    [
+      "ejs@^2.4.1",
+      "/Users/watilde/Development/good-bug-report"
+    ]
+  ],
+  "_from": "ejs@>=2.4.1 <3.0.0",
+  "_id": "ejs@2.4.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/ejs",
+  "_nodeVersion": "0.12.4",
+  "_npmUser": {
+    "email": "mde@fleegix.org",
+    "name": "mde"
+  },
+  "_npmVersion": "2.10.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "ejs",
+    "raw": "ejs@^2.4.1",
+    "rawSpec": "^2.4.1",
+    "scope": null,
+    "spec": ">=2.4.1 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ejs/-/ejs-2.4.1.tgz",
+  "_shasum": "82e15b1b2a1f948b18097476ba2bd7c66f4d1566",
+  "_shrinkwrap": null,
+  "_spec": "ejs@^2.4.1",
+  "_where": "/Users/watilde/Development/good-bug-report",
+  "author": {
+    "email": "mde@fleegix.org",
+    "name": "Matthew Eernisse",
+    "url": "http://fleegix.org"
+  },
+  "bugs": {
+    "url": "https://github.com/mde/ejs/issues"
+  },
+  "contributors": [
+    {
+      "email": "timothygu99@gmail.com",
+      "name": "Timothy Gu",
+      "url": "https://timothygu.github.io"
+    }
+  ],
+  "dependencies": {},
+  "description": "Embedded JavaScript templates",
+  "devDependencies": {
+    "browserify": "^8.0.3",
+    "istanbul": "~0.3.5",
+    "jake": "^8.0.0",
+    "jsdoc": "^3.3.0-beta1",
+    "lru-cache": "^2.5.0",
+    "mocha": "^2.1.0",
+    "rimraf": "^2.2.8",
+    "uglify-js": "^2.4.16"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "82e15b1b2a1f948b18097476ba2bd7c66f4d1566",
+    "tarball": "http://registry.npmjs.org/ejs/-/ejs-2.4.1.tgz"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "homepage": "https://github.com/mde/ejs",
+  "keywords": [
+    "template",
+    "engine",
+    "ejs"
+  ],
+  "license": "Apache-2.0",
+  "main": "./lib/ejs.js",
+  "maintainers": [
+    {
+      "email": "tj@vision-media.ca",
+      "name": "tjholowaychuk"
+    },
+    {
+      "email": "mde@fleegix.org",
+      "name": "mde"
+    }
+  ],
+  "name": "ejs",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mde/ejs.git"
+  },
+  "scripts": {
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
+    "devdoc": "rimraf out && jsdoc -p -c jsdoc.json lib/* docs/jsdoc/*",
+    "doc": "rimraf out && jsdoc -c jsdoc.json lib/* docs/jsdoc/*",
+    "test": "mocha"
+  },
+  "version": "2.4.1"
+}
 
-},{}],4:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -1122,43 +1358,78 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":5}],5:[function(require,module,exports){
+},{"_process":16}],16:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
 var queue = [];
 var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
 
 function drainQueue() {
     if (draining) {
         return;
     }
+    var timeout = setTimeout(cleanUpNextTick);
     draining = true;
-    var currentQueue;
+
     var len = queue.length;
     while(len) {
         currentQueue = queue;
         queue = [];
-        var i = -1;
-        while (++i < len) {
-            currentQueue[i]();
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
         }
+        queueIndex = -1;
         len = queue.length;
     }
+    currentQueue = null;
     draining = false;
+    clearTimeout(timeout);
 }
+
 process.nextTick = function (fun) {
-    queue.push(fun);
-    if (!draining) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
         setTimeout(drainQueue, 0);
     }
 };
 
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
 process.title = 'browser';
 process.browser = true;
 process.env = {};
 process.argv = [];
 process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
 
 function noop() {}
 
@@ -1174,55 +1445,10 @@ process.binding = function (name) {
     throw new Error('process.binding is not supported');
 };
 
-// TODO(shtylman)
 process.cwd = function () { return '/' };
 process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 process.umask = function() { return 0; };
 
-},{}],6:[function(require,module,exports){
-module.exports={
-  "name": "ejs",
-  "description": "Embedded JavaScript templates",
-  "keywords": [
-    "template",
-    "engine",
-    "ejs"
-  ],
-  "version": "2.4.0",
-  "author": "Matthew Eernisse <mde@fleegix.org> (http://fleegix.org)",
-  "contributors": [
-    "Timothy Gu <timothygu99@gmail.com> (https://timothygu.github.io)"
-  ],
-  "license": "Apache-2.0",
-  "main": "./lib/ejs.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/mde/ejs.git"
-  },
-  "bugs": "https://github.com/mde/ejs/issues",
-  "homepage": "https://github.com/mde/ejs",
-  "dependencies": {},
-  "devDependencies": {
-    "browserify": "^8.0.3",
-    "istanbul": "~0.3.5",
-    "jake": "^8.0.0",
-    "jsdoc": "^3.3.0-beta1",
-    "lru-cache": "^2.5.0",
-    "mocha": "^2.1.0",
-    "rimraf": "^2.2.8",
-    "uglify-js": "^2.4.16"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "mocha",
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
-    "doc": "rimraf out && jsdoc -c jsdoc.json lib/* docs/jsdoc/*",
-    "devdoc": "rimraf out && jsdoc -p -c jsdoc.json lib/* docs/jsdoc/*"
-  }
-}
-
-},{}]},{},[1]);
+},{}]},{},[2]);
