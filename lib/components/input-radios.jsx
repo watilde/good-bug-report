@@ -8,15 +8,14 @@ const styles = {
 }
 
 const InputRadios = React.createClass({
-  componentDidMount() {
+  componentDidMount () {
     componentHandler.upgradeDom()
   },
-  render() {
+  render () {
     return (
       <div>
         <h3>{this.props.field.label}</h3>
         {this.props.field.values.map((value, i) => {
-          const key = ids()
           return <InputRadio key={ids()} name={this.props.id} value={value} />
         })}
       </div>

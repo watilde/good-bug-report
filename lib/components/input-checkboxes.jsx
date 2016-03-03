@@ -8,10 +8,10 @@ const styles = {
 }
 
 const InputCheckboxes = React.createClass({
-  componentDidMount() {
+  componentDidMount () {
     componentHandler.upgradeDom()
   },
-  render() {
+  render () {
     return (
       <div>
         <h3>{this.props.field.label}</h3>

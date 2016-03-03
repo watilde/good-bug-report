@@ -9,15 +9,15 @@ const SubmitButton = React.createClass({
     isAgreed: React.PropTypes.bool.isRequired,
     onSubmit: React.PropTypes.func.isRequired
   },
-  componentDidMount() {
+  componentDidMount () {
     componentHandler.upgradeDom()
   },
-  _onSubmit() {
+  _onSubmit () {
     this.props.onSubmit()
   },
-  render() {
+  render () {
     return (
-      <button onClick={this._onSubmit} type="button" className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled={this.props.isAgreed ? false : true}>
+      <button onClick={this._onSubmit} type='button' className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' disabled={!!this.props.isAgreed}>
         Submit
       </button>
     )

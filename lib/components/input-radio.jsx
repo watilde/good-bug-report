@@ -5,14 +5,14 @@ const styles = {
 }
 
 const InputRadio = React.createClass({
-  componentDidMount() {
+  componentDidMount () {
     componentHandler.upgradeDom()
   },
-  render() {
+  render () {
     return (
-      <label className="gbr-radio mdl-radio mdl-js-radio mdl-js-ripple-effect">
-        <input type="radio" className="mdl-radio__button" name={this.props.name} defaultValue={this.props.value} />
-        <span className="mdl-radio__label">{this.props.value}</span>
+      <label className='gbr-radio mdl-radio mdl-js-radio mdl-js-ripple-effect'>
+        <input type='radio' className='mdl-radio__button' name={this.props.name} defaultValue={this.props.value} />
+        <span className='mdl-radio__label'>{this.props.value}</span>
       </label>
     )
   }

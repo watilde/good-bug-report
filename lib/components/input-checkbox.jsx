@@ -5,14 +5,14 @@ const styles = {
 }
 
 const InputCheckbox = React.createClass({
-  componentDidMount() {
+  componentDidMount () {
     componentHandler.upgradeDom()
   },
-  render() {
+  render () {
     return (
-      <label className="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-        <input type="checkbox" className="mdl-checkbox__input" name={this.props.name} defaultValue={this.props.value} />
-        <span className="mdl-checkbox__label">{this.props.value}</span>
+      <label className='mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect'>
+        <input type='checkbox' className='mdl-checkbox__input' name={this.props.name} defaultValue={this.props.value} />
+        <span className='mdl-checkbox__label'>{this.props.value}</span>
       </label>
     )
   }
