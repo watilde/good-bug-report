@@ -8,8 +8,9 @@
     "build": "browserify lib/index.js -o src/index.js -t babelify",
     "watch": "watchify lib/index.js -o src/index.js -t babelify -v",
     "server": "http-server -c 1 -a localhost src",
-    "start": "npm run watch & npm run server",
-    "test": "npm test"
+    "start": "npm run opener && npm run watch & npm run server",
+    "test": "npm test",
+    "opener": "opener http://localhost:8080"
   },
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "http-server": "^0.9.0",
+    "opener": "^1.4.1",
     "watchify": "^3.7.0"
   }
 }
