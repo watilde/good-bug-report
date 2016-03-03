@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "deploy": "git push origin :gh-pages && git subtree push --prefix src/ origin gh-pages",
+    "prebuild": "npm run lint",
     "build": "browserify lib/index.js -o src/index.js -t babelify",
     "watch": "watchify lib/index.js -o src/index.js -t babelify -v",
     "server": "http-server -c 1 -a localhost src",
     "start": "npm run opener && npm run watch & npm run server",
     "test": "npm test",
-    "opener": "opener http://localhost:8080"
+    "opener": "opener http://localhost:8080",
+    "lint": "standard lib/**/*.js lib/**/*.jsx"
   },
   "repository": {
     "type": "git",
@@ -44,6 +46,10 @@
     "browserify": "^13.0.0",
     "http-server": "^0.9.0",
     "opener": "^1.4.1",
+    "standard": "^6.0.7",
     "watchify": "^3.7.0"
+  },
+  "standard": {
+    "globals": [ "componentHandler" ]
   }
 }

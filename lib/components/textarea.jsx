@@ -6,21 +6,21 @@ const styles = {
 }
 
 const Textarea = React.createClass({
-  componentDidMount() {
+  componentDidMount () {
     componentHandler.upgradeDom()
   },
-  render() {
+  render () {
     return (
       <div>
         <h3>{this.props.field.label}</h3>
-        <div className="gbr-textfield mdl-textfield mdl-js-textfield">
+        <div className='gbr-textfield mdl-textfield mdl-js-textfield'>
           <textarea
-            className="mdl-textfield__input"
-            type="text"
-            rows= "3"
+            className='mdl-textfield__input'
+            type='text'
+            rows='3'
             name={ids()}
-            required={this.props.field.required ? true : false }></textarea>
-          <label className="mdl-textfield__label">{this.props.field.placeholder}</label>
+            required={!!this.props.field.required}></textarea>
+          <label className='mdl-textfield__label'>{this.props.field.placeholder}</label>
         </div>
       </div>
     )

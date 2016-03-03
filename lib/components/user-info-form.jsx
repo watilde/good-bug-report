@@ -11,51 +11,51 @@ const UserInfoForm = React.createClass({
   propTypes: {
     initialCanTransit: React.PropTypes.bool
   },
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       initialCanTransit: false
     }
   },
-  getInitialState() {
+  getInitialState () {
     return {
       account: '',
       repository: '',
       canTransit: this.props.initialCanTransit
     }
   },
-  componentDidMount() {
+  componentDidMount () {
     componentHandler.upgradeDom()
   },
-  onClick() {
+  onClick () {
     this.context.router.push({
       pathname: `/${this.state.account}/${this.state.repository}`
     })
   },
-  onChangeAccount(e) {
+  onChangeAccount (e) {
     this.setState({account: e.target.value})
     this.checkAllValue()
   },
-  onChangeRepository(e) {
+  onChangeRepository (e) {
     this.setState({repository: e.target.value})
     this.checkAllValue()
   },
-  checkAllValue() {
+  checkAllValue () {
     const account = this.state.account.trim()
     const repository = this.state.repository.trim()
     this.setState({canTransit: (account && repository)})
   },
-  render() {
+  render () {
     return (
       <div>
         <label>
           <span>account: </span>
-          <input type="text" value={this.state.account} onChange={this.onChangeAccount} onBlur={this.checkAllValue} />
+          <input type='text' value={this.state.account} onChange={this.onChangeAccount} onBlur={this.checkAllValue} />
         </label>
         <label>
           <span>repository: </span>
-          <input type="text" value={this.state.repository} onChange={this.onChangeRepository} onBlur={this.checkAllValue} />
+          <input type='text' value={this.state.repository} onChange={this.onChangeRepository} onBlur={this.checkAllValue} />
         </label>
-        <button onClick={this.onClick} type="button" disabled={!this.state.canTransit}>Go</button>
+        <button onClick={this.onClick} type='button' disabled={!this.state.canTransit}>Go</button>
       </div>
     )
   }

@@ -4,12 +4,12 @@ import { useSheet } from '../jss'
 import { endpoints } from '../config'
 import ids from '../util/ids'
 
-import InputText from './input-text'
-import InputCheckboxes from './input-checkboxes'
-import InputRadios from './input-radios'
-import Textarea from './textarea'
-import Agreement from './agreement'
-import SubmitButton from './submit-button'
+import InputText from './input-text.jsx'
+import InputCheckboxes from './input-checkboxes.jsx'
+import InputRadios from './input-radios.jsx'
+import Textarea from './textarea.jsx'
+import Agreement from './agreement.jsx'
+import SubmitButton from './submit-button.jsx'
 
 const styles = {
 }
@@ -18,12 +18,12 @@ const Form = React.createClass({
   propTypes: {
     initialIsAgreed: React.PropTypes.bool
   },
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       initialIsAgreed: false
     }
   },
-  getInitialState() {
+  getInitialState () {
     return {
       account: '',
       repository: '',
@@ -31,23 +31,23 @@ const Form = React.createClass({
         title: '---',
         fields: []
       },
-      isAgreed : this.props.initialIsAgreed
+      isAgreed: this.props.initialIsAgreed
     }
   },
-  onSubmit() {
+  onSubmit () {
     console.log('submit')
   },
-  toggleIsAgreed() {
+  toggleIsAgreed () {
     this.setState({
       isAgreed: !this.state.isAgreed
     })
   },
-  fetchData(account, repository) {
+  fetchData (account, repository) {
     if (!account || !repository) {
       return
     }
     const json = `${endpoints.rawgit}${account}/${repository}/master/issue.json`
-    this.serverRequest = request.get(json).then( (res) => {
+    this.serverRequest = request.get(json).then((res) => {
       if (this.isMounted()) {
         this.setState({
           account: account,
@@ -57,19 +57,19 @@ const Form = React.createClass({
       }
     })
   },
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     const { account, repository } = nextProps.params
     this.fetchData(account, repository)
   },
-  componentDidMount() {
+  componentDidMount () {
     const { account, repository } = this.props.params
     this.fetchData(account, repository)
   },
-  render() {
+  render () {
     if (!this.state.data.fields.length) {
       return false
     }
-    const formComponents = this.state.data.fields.map( (field, idx) => {
+    const formComponents = this.state.data.fields.map((field, idx) => {
       const key = ids()
       if (field.type === 'text') {
         return <InputText field={field} key={key} id={key}/>
@@ -89,9 +89,9 @@ const Form = React.createClass({
           <dt>repository</dt>
           <dd>{this.state.repository}</dd>
           <dt>title</dt>
-          <dd>{ this.state.data.title }</dd>
+          <dd>{this.state.data.title}</dd>
           <dt>fields.length</dt>
-          <dd>{ this.state.data.fields.length }</dd>
+          <dd>{this.state.data.fields.length}</dd>
         </dl>
         {formComponents}
         <Agreement toggleIsAgreed={this.toggleIsAgreed} />

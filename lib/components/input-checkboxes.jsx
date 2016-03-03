@@ -2,16 +2,16 @@ import React from 'react'
 import { useSheet } from '../jss'
 import ids from '../util/ids'
 
-import InputCheckbox from './input-checkbox'
+import InputCheckbox from './input-checkbox.jsx'
 
 const styles = {
 }
 
 const InputCheckboxes = React.createClass({
-  componentDidMount() {
+  componentDidMount () {
     componentHandler.upgradeDom()
   },
-  render() {
+  render () {
     return (
       <div>
         <h3>{this.props.field.label}</h3>
