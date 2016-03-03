@@ -444,6 +444,9 @@ var Form = _react2.default.createClass({
   fetchData: function fetchData(account, repository) {
     var _this = this;
 
+    if (!account || !repository) {
+      return;
+    }
     var json = '' + _config.endpoints.rawgit + account + '/' + repository + '/master/issue.json';
     this.serverRequest = _axios2.default.get(json).then(function (res) {
       if (_this.isMounted()) {
