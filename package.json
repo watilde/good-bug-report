@@ -48,5 +48,8 @@
     "opener": "^1.4.1",
     "standard": "^6.0.7",
     "watchify": "^3.7.0"
+  },
+  "standard": {
+    "globals": [ "componentHandler" ]
   }
 }
