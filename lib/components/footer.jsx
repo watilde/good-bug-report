@@ -13,7 +13,7 @@ const Footer = React.createClass({
             <li>
               created by
               <a href='https://twitter.com/watilde'>@watilde</a>
-              and
+              &nbsp;and&nbsp;
               <a href='https://twitter.com/geckotang'>@geckotang</a>
             </li>
           </ul>

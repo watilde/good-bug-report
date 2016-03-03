@@ -174,7 +174,7 @@ var Footer = _react2.default.createClass({
               { href: 'https://twitter.com/watilde' },
               '@watilde'
             ),
-            'and',
+            ' and ',
             _react2.default.createElement(
               'a',
               { href: 'https://twitter.com/geckotang' },
