@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSheet } from '../jss'
 
-import Header from './header'
-import Footer from './footer'
-import Form from './Form'
-import UserInfoForm from './user-info-form'
+import Header from './header.jsx'
+import Footer from './footer.jsx'
+import Form from './form.jsx'
+import UserInfoForm from './user-info-form.jsx'
 import { Link } from 'react-router'
 
 

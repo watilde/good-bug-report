@@ -2,12 +2,12 @@ import React from 'react'
 import { useSheet } from '../jss'
 import ids from '../util/ids'
 
-import InputCheckbox from './input-checkbox'
+import InputRadio from './input-radio.jsx'
 
 const styles = {
 }
 
-const InputCheckboxes = React.createClass({
+const InputRadios = React.createClass({
   componentDidMount() {
     componentHandler.upgradeDom()
   },
@@ -17,11 +17,11 @@ const InputCheckboxes = React.createClass({
         <h3>{this.props.field.label}</h3>
         {this.props.field.values.map((value, i) => {
           const key = ids()
-          return <InputCheckbox key={key} name={key} value={value} />
+          return <InputRadio key={ids()} name={this.props.id} value={value} />
         })}
       </div>
     )
   }
 })
 
-export default useSheet(InputCheckboxes, styles)
+export default useSheet(InputRadios, styles)

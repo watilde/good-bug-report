@@ -4,12 +4,12 @@ import { useSheet } from '../jss'
 import { endpoints } from '../config'
 import ids from '../util/ids'
 
-import InputText from './input-text'
-import InputCheckboxes from './input-checkboxes'
-import InputRadios from './input-radios'
-import Textarea from './textarea'
-import Agreement from './agreement'
-import SubmitButton from './submit-button'
+import InputText from './input-text.jsx'
+import InputCheckboxes from './input-checkboxes.jsx'
+import InputRadios from './input-radios.jsx'
+import Textarea from './textarea.jsx'
+import Agreement from './agreement.jsx'
+import SubmitButton from './submit-button.jsx'
 
 const styles = {
 }
