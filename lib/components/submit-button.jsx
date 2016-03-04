@@ -17,7 +17,7 @@ const SubmitButton = React.createClass({
   },
   render () {
     return (
-      <button onClick={this._onSubmit} type='button' className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' disabled={!!this.props.isAgreed}>
+      <button onClick={this._onSubmit} type='button' className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' disabled={!this.props.isAgreed}>
         Submit
       </button>
     )
