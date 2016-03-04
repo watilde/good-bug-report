@@ -319,54 +319,53 @@ var Form = _react2.default.createClass({
     });
     return _react2.default.createElement(
       'div',
-      null,
+      { className: 'gbr-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col' },
       _react2.default.createElement(
-        'dl',
+        'h2',
+        { className: 'mdl-typography--text-center' },
+        this.state.data.title
+      ),
+      _react2.default.createElement(
+        'h3',
         null,
+        'Title'
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'gbr-textfield mdl-textfield mdl-js-textfield' },
+        _react2.default.createElement('input', { className: 'mdl-textfield__input', type: 'text', id: 'js-issue-title' }),
         _react2.default.createElement(
-          'dt',
-          null,
-          'account'
-        ),
+          'label',
+          { className: 'mdl-textfield__label', htmlFor: 'js-issue-title' },
+          'Title'
+        )
+      ),
+      _react2.default.createElement(
+        'h3',
+        null,
+        'Description'
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'gbr-textfield mdl-textfield mdl-js-textfield' },
+        _react2.default.createElement('textarea', { className: 'mdl-textfield__input', type: 'text', rows: '3', id: 'js-issue-description' }),
         _react2.default.createElement(
-          'dd',
-          null,
-          this.state.account
-        ),
-        _react2.default.createElement(
-          'dt',
-          null,
-          'repository'
-        ),
-        _react2.default.createElement(
-          'dd',
-          null,
-          this.state.repository
-        ),
-        _react2.default.createElement(
-          'dt',
-          null,
-          'title'
-        ),
-        _react2.default.createElement(
-          'dd',
-          null,
-          this.state.data.title
-        ),
-        _react2.default.createElement(
-          'dt',
-          null,
-          'fields.length'
-        ),
-        _react2.default.createElement(
-          'dd',
-          null,
-          this.state.data.fields.length
+          'label',
+          { className: 'mdl-textfield__label', htmlFor: 'js-issue-description' },
+          'Leave a comment'
         )
       ),
       formComponents,
-      _react2.default.createElement(_agreement2.default, { toggleIsAgreed: this.toggleIsAgreed }),
-      _react2.default.createElement(_submitButton2.default, { isAgreed: this.state.isAgreed, onSubmit: this.onSubmit })
+      _react2.default.createElement(
+        'div',
+        { className: 'gbr-content-footer' },
+        _react2.default.createElement(_agreement2.default, { isAgreed: this.state.isAgreed, toggleIsAgreed: this.toggleIsAgreed }),
+        _react2.default.createElement(
+          'div',
+          { className: 'mdl-typography--text-center' },
+          _react2.default.createElement(_submitButton2.default, { isAgreed: this.state.isAgreed, onSubmit: this.onSubmit })
+        )
+      )
     );
   }
 });

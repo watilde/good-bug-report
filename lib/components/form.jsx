@@ -82,20 +82,25 @@ const Form = React.createClass({
       }
     })
     return (
-      <div>
-        <dl>
-          <dt>account</dt>
-          <dd>{this.state.account}</dd>
-          <dt>repository</dt>
-          <dd>{this.state.repository}</dd>
-          <dt>title</dt>
-          <dd>{this.state.data.title}</dd>
-          <dt>fields.length</dt>
-          <dd>{this.state.data.fields.length}</dd>
-        </dl>
+      <div className='gbr-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col'>
+        <h2 className='mdl-typography--text-center'>{this.state.data.title}</h2>
+        <h3>Title</h3>
+        <div className='gbr-textfield mdl-textfield mdl-js-textfield'>
+          <input className='mdl-textfield__input' type='text' id='js-issue-title' />
+          <label className='mdl-textfield__label' htmlFor='js-issue-title'>Title</label>
+        </div>
+        <h3>Description</h3>
+        <div className='gbr-textfield mdl-textfield mdl-js-textfield'>
+          <textarea className='mdl-textfield__input' type='text' rows='3' id='js-issue-description' ></textarea>
+          <label className='mdl-textfield__label' htmlFor='js-issue-description'>Leave a comment</label>
+        </div>
         {formComponents}
-        <Agreement toggleIsAgreed={this.toggleIsAgreed} />
-        <SubmitButton isAgreed={this.state.isAgreed} onSubmit={this.onSubmit} />
+        <div className='gbr-content-footer'>
+          <Agreement isAgreed={this.state.isAgreed} toggleIsAgreed={this.toggleIsAgreed} />
+          <div className='mdl-typography--text-center'>
+            <SubmitButton isAgreed={this.state.isAgreed} onSubmit={this.onSubmit} />
+          </div>
+        </div>
       </div>
     )
   }
